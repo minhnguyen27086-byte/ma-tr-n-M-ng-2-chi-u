@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    // Ma trận phải vuông
+    if (n != m) {
+        return 0;
+    }
+
+    double a[n][m];
+    double trace = 0;
+
+    // Nhập ma trận và tính vết
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> a[i][j];
+            if (i == j)
+            trace += a[i][j];
+        }
+    }
+
+    cout << trace;
+    return 0;
+}
