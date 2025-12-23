@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    // Ma trận phải vuông
+    if (n != m) {
+        cout << "No";
+        return 0;
+    }
+
+    double a;
+  
+
+    // Nhập ma trận và tính vết
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> a;
+            if (i != j && a != 0){
+        cout << "No";
+        return 0;
+        }
+        }
+    }
+    cout << "Yes";
+    return 0;
+}
