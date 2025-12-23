@@ -1,0 +1,50 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+    if (n != m) {
+        cout << "No\n";
+        return 0;
+    }
+
+    vector<vector<double>> A(n, vector<double>(n));
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            cin >> A[i][j];
+
+    // Kiểm tra đường chéo chính
+    for (int i = 0; i < n; i++) {
+        if (A[i][i] != 1) {
+            cout << "No\n";
+            return 0;
+        }
+    }
+
+    int allowedCol = -1; // cột được phép có phần tử dưới đường chéo khác 0
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (i == j) continue; // bỏ qua đường chéo chính
+            if (j > i) { // trên đường chéo
+                if (A[i][j] != 0) {
+                    cout << "No\n";
+                    return 0;
+                }
+            } else { // dưới đường chéo
+                if (A[i][j] != 0) {
+                    if (allowedCol == -1) {
+                        allowedCol = j; // ghi nhận cột đầu tiên
+                    } else if (allowedCol != j) {
+                        cout << "No\n";
+                        return 0;
+                    }
+                }
+            }
+        }
+    }
+
+    cout << "Yes\n";
+    return 0;
+}
